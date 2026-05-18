@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Explore Programs - Hazara University</title>
+
+  <link rel="stylesheet" href="style/styles.css" />
+
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #f4f6f8;
+      color: #333;
+    }
+
+    /* HEADER */
+    header {
+      background: #1a2e35;
+      padding: 12px 30px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+    }
+
+    .header-container {
+      max-width: 1400px;
+      margin: auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+      color: #e0f2fe;
+    }
+
+    .logo img {
+      height: 40px;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 18px;
+      padding: 0;
+      margin: 0;
+      flex-wrap: wrap;
+    }
+
+    nav a {
+      color: #bae6fd;
+      text-decoration: none;
+      font-size: 0.9rem;
+    }
+
+    /* CONTAINER */
+    .programs-container {
+      max-width: 900px;
+      margin: 40px auto;
+      padding: 25px;
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+
+    h2 {
+      text-align: center;
+      color: #2f5233;
+      margin-bottom: 20px;
+    }
+
+    input {
+      width: 100%;
+      padding: 12px;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+      margin-bottom: 20px;
+      font-size: 1rem;
+    }
+
+    ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    li {
+      background: #f1f5f1;
+      margin-bottom: 8px;
+      padding: 10px 14px;
+      border-radius: 6px;
+      border-left: 4px solid #76B947;
+      transition: 0.2s;
+    }
+
+    li:hover {
+      transform: translateX(4px);
+      background: #e8f5e9;
+    }
+
+    .btn {
+      display: block;
+      margin-top: 25px;
+      text-align: center;
+      padding: 12px;
+      background: #76B947;
+      color: white;
+      text-decoration: none;
+      border-radius: 6px;
+      font-weight: bold;
+    }
+
+    .btn:hover {
+      background: #5fa435;
+    }
+
+    @media (max-width: 768px) {
+      .header-container {
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<!-- HEADER (FIXED PROPERLY) -->
+<header>
+  <div class="header-container">
+
+    <a href="index.html" class="logo">
+      <img src="https://cdn.moawin.pk/images/branches/2024/04/29/654654_1pv84.png" />
+      <h1 style="font-size:1.2rem; margin:0;">Hazara University</h1>
+    </a>
+
+
+  </div>
+</header>
+
+<!-- MAIN -->
+<section class="programs-container">
+
+  <h2>Explore Academic Programs</h2>
+
+  <input type="text" id="search" placeholder="Search programs..." />
+
+  <ul id="programList">
+    <li>BS Archaeology</li>
+    <li>BS Architecture</li>
+    <li>BS Art & Design</li>
+    <li>BS Communication & Media Studies</li>
+    <li>BS Conservation Studies</li>
+    <li>BS Education</li>
+    <li>BS English</li>
+    <li>BS Geology</li>
+    <li>BS Pakistan Studies</li>
+    <li>BS Tourism & Hospitality</li>
+    <li>BS Urdu</li>
+    <li>BS Agriculture</li>
+    <li>BS Biochemistry</li>
+    <li>BS Biotechnology</li>
+    <li>BS Botany</li>
+    <li>BS Human Genetics</li>
+    <li>BS Microbiology</li>
+    <li>DPT (Doctor of Physiotherapy)</li>
+    <li>BS Medical Lab Technology</li>
+    <li>BS Pharmacy</li>
+    <li>BS Zoology</li>
+    <li>BS Islamic & Religious Studies</li>
+    <li>LLB (Law)</li>
+    <li>BS Economics</li>
+    <li>BS Political Science</li>
+    <li>BS International Relations</li>
+    <li>BS Psychology</li>
+    <li>BS Sociology</li>
+    <li>BS Public Policy & Administration</li>
+    <li>BS Chemistry</li>
+    <li>BS Environmental Sciences</li>
+    <li>BS Mathematics</li>
+    <li>BS Physics</li>
+    <li>BS IT (Information Technology)</li>
+    <li>BS Statistics</li>
+    <li>BS Telecommunication</li>
+    <li>BS Artificial Intelligence</li>
+    <li>BS Software Engineering</li>
+    <li>BS Computer Science</li>
+    <li>BS Management Sciences</li>
+    <li>BS Bioinformatics</li>
+    <li>MPhil Zoology</li>
+    <li>PhD Zoology</li>
+  </ul>
+
+  <a href="index.html" class="btn">⬅ Back to Home</a>
+
+</section>
+
+<!-- SCRIPT (REAL FUNCTIONALITY) -->
+<script>
+  const search = document.getElementById("search");
+  const list = document.getElementById("programList");
+  const items = list.getElementsByTagName("li");
+
+  search.addEventListener("input", function () {
+    const value = this.value.toLowerCase();
+
+    for (let i = 0; i < items.length; i++) {
+      const text = items[i].textContent.toLowerCase();
+      items[i].style.display = text.includes(value) ? "" : "none";
+    }
+  });
+</script>
+
+</body>
+</html>

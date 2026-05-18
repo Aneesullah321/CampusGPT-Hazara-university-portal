@@ -1,0 +1,730 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Faculties & Departments | Hazara University</title>
+
+  <!-- Bootstrap -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+
+  <!-- External CSS -->
+  <link rel="stylesheet" href="style/styles.css" />
+  <link rel="stylesheet" href="style/chatbot.css" />
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Segoe UI", sans-serif;
+    }
+
+    body {
+      background:
+        linear-gradient(rgba(10, 20, 30, 0.75),
+          rgba(10, 20, 30, 0.75)),
+        url('https://images.unsplash.com/photo-1562774053-701939374585?q=80&w=1800&auto=format&fit=crop');
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+      min-height: 100vh;
+      color: #fff;
+    }
+
+    /* ================= NAVBAR ================= */
+
+    .header {
+      background: rgba(11, 25, 35, 0.92);
+      backdrop-filter: blur(10px);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .navbar-container {
+      max-width: 1450px;
+      margin: auto;
+      padding: 15px 30px;
+
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      text-decoration: none;
+    }
+
+    .logo img {
+      width: 52px;
+      height: 52px;
+      object-fit: contain;
+    }
+
+    .logo h1 {
+      color: white;
+      font-size: 1.35rem;
+      margin: 0;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      flex-wrap: wrap;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: #d9f2ff;
+      font-size: 0.95rem;
+      font-weight: 500;
+      position: relative;
+      transition: 0.3s ease;
+    }
+
+    .nav-links a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -6px;
+      width: 0%;
+      height: 2px;
+      background: #4fc3f7;
+      transition: 0.3s ease;
+    }
+
+    .nav-links a:hover {
+      color: #4fc3f7;
+    }
+
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+
+    .search-box {
+      display: flex;
+      align-items: center;
+      background: rgba(255, 255, 255, 0.08);
+      border-radius: 40px;
+      overflow: hidden;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+    }
+
+    .search-box input {
+      border: none;
+      outline: none;
+      background: transparent;
+      color: white;
+      padding: 10px 14px;
+      width: 180px;
+    }
+
+    .search-box input::placeholder {
+      color: #bfe9ff;
+    }
+
+    .search-box button {
+      border: none;
+      background: #4fc3f7;
+      color: white;
+      padding: 10px 15px;
+      cursor: pointer;
+      transition: 0.3s ease;
+    }
+
+    .search-box button:hover {
+      background: #039be5;
+    }
+
+    /* ================= HERO ================= */
+
+    .hero-section {
+      text-align: center;
+      padding: 90px 20px 60px;
+    }
+
+    .hero-section h2 {
+      font-size: 3.2rem;
+      font-weight: 800;
+      margin-bottom: 18px;
+    }
+
+    .hero-section p {
+      max-width: 800px;
+      margin: auto;
+      color: #d7ebf7;
+      font-size: 1.1rem;
+      line-height: 1.8;
+    }
+
+    /* ================= MAIN CONTAINER ================= */
+
+    .main-container {
+      max-width: 1400px;
+      margin: auto;
+      padding: 30px 20px 80px;
+    }
+
+    /* ================= STATS ================= */
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 20px;
+      margin-bottom: 50px;
+    }
+
+    .stat-card {
+      background: rgba(255, 255, 255, 0.08);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 18px;
+      padding: 28px;
+      text-align: center;
+      transition: 0.3s ease;
+    }
+
+    .stat-card:hover {
+      transform: translateY(-8px);
+      background: rgba(255, 255, 255, 0.12);
+    }
+
+    .stat-card h3 {
+      font-size: 2rem;
+      color: #4fc3f7;
+      margin-bottom: 10px;
+      font-weight: 800;
+    }
+
+    .stat-card p {
+      color: #d8ecf5;
+      margin: 0;
+    }
+
+    /* ================= FILTER SECTION ================= */
+
+    .filter-box {
+      background: rgba(255, 255, 255, 0.08);
+      backdrop-filter: blur(10px);
+      padding: 25px;
+      border-radius: 18px;
+      margin-bottom: 50px;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .form-control,
+    .form-select {
+      border-radius: 12px;
+      padding: 12px;
+      border: none;
+      background: rgba(255, 255, 255, 0.9);
+    }
+
+    /* ================= SECTION TITLE ================= */
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    .section-title h3 {
+      font-size: 2.3rem;
+      font-weight: 800;
+      margin-bottom: 12px;
+    }
+
+    .section-title p {
+      color: #d7ebf7;
+    }
+
+    /* ================= BLOCK CARDS ================= */
+
+    .block-card {
+      background: rgba(255, 255, 255, 0.08);
+      border-radius: 24px;
+      padding: 30px 20px;
+      text-align: center;
+      transition: 0.35s ease;
+      cursor: pointer;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      backdrop-filter: blur(10px);
+      overflow: hidden;
+      position: relative;
+      height: 100%;
+    }
+
+    .block-card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg,
+          rgba(79, 195, 247, 0.2),
+          rgba(118, 185, 71, 0.1));
+      opacity: 0;
+      transition: 0.4s ease;
+    }
+
+    .block-card:hover::before {
+      opacity: 1;
+    }
+
+    .block-card:hover {
+      transform: translateY(-10px) scale(1.02);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.25);
+    }
+
+    .icon-wrapper {
+      width: 110px;
+      height: 110px;
+      margin: auto;
+      border-radius: 24px;
+
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      background: linear-gradient(135deg, #00b4db, #0083b0);
+      margin-bottom: 22px;
+    }
+
+    .icon-wrapper i {
+      font-size: 3rem;
+      color: white;
+    }
+
+    .block-card h4 {
+      color: white;
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+
+    .block-card p {
+      color: #d7ebf7;
+      font-size: 0.95rem;
+      line-height: 1.6;
+    }
+
+    /* ================= BUTTON ================= */
+
+    .home-btn {
+      display: inline-block;
+      margin-top: 50px;
+      background: linear-gradient(to right, #00b4db, #0083b0);
+      color: white;
+      text-decoration: none;
+      padding: 14px 34px;
+      border-radius: 50px;
+      font-weight: 700;
+      transition: 0.3s ease;
+    }
+
+    .home-btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 12px 25px rgba(0, 132, 176, 0.35);
+    }
+
+    .btn-container {
+      text-align: center;
+    }
+
+    /* ================= MODAL ================= */
+
+    .modal-content {
+      border-radius: 22px;
+      overflow: hidden;
+      border: none;
+    }
+
+    .modal-header {
+      background: linear-gradient(90deg, #0f2027, #2c5364);
+      color: white;
+    }
+
+    .course-item {
+      background: #f4f9fb;
+      border-left: 5px solid #00b4db;
+      border-radius: 12px;
+      padding: 15px;
+      margin-bottom: 15px;
+      transition: 0.3s ease;
+    }
+
+    .course-item:hover {
+      transform: translateX(6px);
+      background: #eef7fb;
+    }
+
+    .course-title {
+      color: #0f2027;
+      font-weight: 700;
+      margin-bottom: 6px;
+    }
+
+    /* ================= FOOTER ================= */
+
+    footer {
+      background: rgba(0, 0, 0, 0.5);
+      text-align: center;
+      padding: 25px;
+      color: #d7ebf7;
+      margin-top: 60px;
+    }
+
+    /* ================= RESPONSIVE ================= */
+
+    @media (max-width: 992px) {
+
+      .navbar-container {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .nav-links {
+        justify-content: center;
+        width: 100%;
+      }
+
+      .search-box {
+        width: 100%;
+      }
+
+      .search-box input {
+        width: 100%;
+      }
+    }
+
+    @media (max-width: 768px) {
+
+      .hero-section h2 {
+        font-size: 2.3rem;
+      }
+
+      .hero-section p {
+        font-size: 1rem;
+      }
+
+      .block-card {
+        padding: 24px 18px;
+      }
+    }
+
+    @media (max-width: 480px) {
+
+      .hero-section h2 {
+        font-size: 1.8rem;
+      }
+
+      .logo h1 {
+        font-size: 1rem;
+      }
+
+      .icon-wrapper {
+        width: 85px;
+        height: 85px;
+      }
+
+      .icon-wrapper i {
+        font-size: 2.3rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ================= HEADER ================= -->
+
+  <header class="header">
+
+    <div class="navbar-container">
+
+      <a href="index.html" class="logo">
+        <img src="https://cdn.moawin.pk/images/branches/2024/04/29/654654_1pv84.png"
+          alt="Hazara University Logo">
+
+        <h1>Hazara University</h1>
+      </a>
+
+      <nav>
+        <ul class="nav-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="admission.html">Admissions</a></li>
+          <li><a href="faculties.html">Faculties</a></li>
+          <li><a href="programs.html">Programs</a></li>
+          <li><a href="calendar.html">Calendar</a></li>
+          <li><a href="research.html">Research</a></li>
+          <li><a href="library.html">Library</a></li>
+          <li><a href="student-portal.html">Portal</a></li>
+          <li><a href="signup.html">Sign Up</a></li>
+          <li><a href="login.html">Login</a></li>
+        </ul>
+      </nav>
+
+      <div class="search-box">
+        <input type="text" placeholder="Search departments..." />
+        <button>
+          <i class="fas fa-search"></i>
+        </button>
+      </div>
+
+    </div>
+
+  </header>
+
+  <!-- ================= HERO ================= -->
+
+  <section class="hero-section">
+
+    <h2>Faculties & Academic Blocks</h2>
+
+    <p>
+      Explore Hazara University's academic ecosystem including departments,
+      programs, research divisions, and specialized learning facilities.
+    </p>
+
+  </section>
+
+  <!-- ================= MAIN ================= -->
+
+  <main class="main-container">
+
+    <!-- Stats -->
+
+    <div class="stats-grid">
+
+      <div class="stat-card">
+        <h3>50+</h3>
+        <p>Degree Programs</p>
+      </div>
+
+      <div class="stat-card">
+        <h3>12</h3>
+        <p>Academic Blocks</p>
+      </div>
+
+      <div class="stat-card">
+        <h3>200+</h3>
+        <p>Faculty Members</p>
+      </div>
+
+      <div class="stat-card">
+        <h3>10,000+</h3>
+        <p>Students</p>
+      </div>
+
+    </div>
+
+    <!-- Filter -->
+
+    <div class="filter-box">
+
+      <div class="row g-3">
+
+        <div class="col-md-8">
+          <input type="text"
+            id="searchInput"
+            class="form-control"
+            placeholder="Search departments or courses..." />
+        </div>
+
+        <div class="col-md-4">
+          <select id="departmentFilter" class="form-select">
+            <option value="all">All Departments</option>
+            <option>Computer Science</option>
+            <option>Engineering</option>
+            <option>Business</option>
+            <option>Arts</option>
+          </select>
+        </div>
+
+      </div>
+
+    </div>
+
+    <!-- Title -->
+
+    <div class="section-title">
+      <h3>Academic Blocks</h3>
+      <p>Click any block to explore courses and departments.</p>
+    </div>
+
+    <!-- Cards -->
+
+    <div class="row g-4">
+
+      <!-- Block Card -->
+
+      <div class="col-lg-3 col-md-6">
+        <div class="block-card"
+          onclick="showBlockDetails(1)"
+          data-bs-toggle="modal"
+          data-bs-target="#blockModal">
+
+          <div class="icon-wrapper">
+            <i class="fas fa-chart-line"></i>
+          </div>
+
+          <h4>Business Block</h4>
+
+          <p>
+            Finance, Management, Marketing, and Entrepreneurship programs.
+          </p>
+
+        </div>
+      </div>
+
+      <div class="col-lg-3 col-md-6">
+        <div class="block-card"
+          onclick="showBlockDetails(2)"
+          data-bs-toggle="modal"
+          data-bs-target="#blockModal">
+
+          <div class="icon-wrapper">
+            <i class="fas fa-laptop-code"></i>
+          </div>
+
+          <h4>Computer Science</h4>
+
+          <p>
+            AI, Machine Learning, Software Engineering, and Data Science.
+          </p>
+
+        </div>
+      </div>
+
+      <div class="col-lg-3 col-md-6">
+        <div class="block-card"
+          onclick="showBlockDetails(3)"
+          data-bs-toggle="modal"
+          data-bs-target="#blockModal">
+
+          <div class="icon-wrapper">
+            <i class="fas fa-heartbeat"></i>
+          </div>
+
+          <h4>Health Sciences</h4>
+
+          <p>
+            Medical research, biotechnology, and healthcare innovation.
+          </p>
+
+        </div>
+      </div>
+
+      <div class="col-lg-3 col-md-6">
+        <div class="block-card"
+          onclick="showBlockDetails(4)"
+          data-bs-toggle="modal"
+          data-bs-target="#blockModal">
+
+          <div class="icon-wrapper">
+            <i class="fas fa-atom"></i>
+          </div>
+
+          <h4>Natural Sciences</h4>
+
+          <p>
+            Physics, Chemistry, Environmental Science, and Mathematics.
+          </p>
+
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Button -->
+
+    <div class="btn-container">
+      <a href="index.html" class="home-btn">
+        ← Back to Home
+      </a>
+    </div>
+
+  </main>
+
+  <!-- ================= MODAL ================= -->
+
+  <div class="modal fade"
+    id="blockModal"
+    tabindex="-1"
+    aria-hidden="true">
+
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+
+      <div class="modal-content">
+
+        <div class="modal-header">
+
+          <h5 class="modal-title">
+            Department Courses
+          </h5>
+
+          <button type="button"
+            class="btn-close btn-close-white"
+            data-bs-dismiss="modal">
+          </button>
+
+        </div>
+
+        <div class="modal-body" id="blockContent">
+
+          <div class="course-item">
+            <div class="course-title">
+              Artificial Intelligence
+            </div>
+
+            <p>
+              Machine Learning, Deep Learning, Neural Networks, NLP.
+            </p>
+          </div>
+
+          <div class="course-item">
+            <div class="course-title">
+              Software Engineering
+            </div>
+
+            <p>
+              Full-stack development, system design, DevOps, and cloud systems.
+            </p>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+  <!-- ================= FOOTER ================= -->
+
+  <footer>
+    © 2026 Hazara University — Innovation, Research & Academic Excellence
+  </footer>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Chatbot -->
+  <script src="script/chatbot.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Academic Calendar | Hazara University</title>
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+
+  <!-- Main CSS -->
+  <link rel="stylesheet" href="style/styles.css" />
+  <link rel="stylesheet" href="style/chatbot.css" />
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    body {
+      background: linear-gradient(to bottom right, #edf7f3, #dceef5);
+      color: #222;
+    }
+
+    /* ================= HEADER ================= */
+
+    .header {
+      background: #0f2027;
+      background: linear-gradient(to right, #203a43, #2c5364);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    }
+
+    .navbar {
+      max-width: 1400px;
+      margin: auto;
+      padding: 14px 30px;
+
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      text-decoration: none;
+    }
+
+    .logo img {
+      height: 50px;
+      width: 50px;
+      object-fit: contain;
+    }
+
+    .logo h1 {
+      color: white;
+      font-size: 1.4rem;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 22px;
+      list-style: none;
+      flex-wrap: wrap;
+    }
+
+    .nav-links a {
+      color: #d9f3ff;
+      text-decoration: none;
+      font-size: 0.95rem;
+      font-weight: 500;
+      transition: 0.3s ease;
+      position: relative;
+    }
+
+    .nav-links a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -5px;
+      width: 0%;
+      height: 2px;
+      background: #4fc3f7;
+      transition: 0.3s ease;
+    }
+
+    .nav-links a:hover {
+      color: #4fc3f7;
+    }
+
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+
+    /* ================= SEARCH ================= */
+
+    .search-box {
+      display: flex;
+      align-items: center;
+      background: rgba(255, 255, 255, 0.12);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 50px;
+      overflow: hidden;
+      backdrop-filter: blur(8px);
+    }
+
+    .search-box input {
+      background: transparent;
+      border: none;
+      padding: 10px 14px;
+      color: white;
+      width: 180px;
+      outline: none;
+    }
+
+    .search-box input::placeholder {
+      color: #cfefff;
+    }
+
+    .search-box button {
+      background: #4fc3f7;
+      border: none;
+      padding: 10px 14px;
+      cursor: pointer;
+      color: white;
+      transition: 0.3s ease;
+    }
+
+    .search-box button:hover {
+      background: #039be5;
+    }
+
+    /* ================= HERO ================= */
+
+    .hero {
+      height: 320px;
+      background:
+        linear-gradient(rgba(0, 0, 0, 0.55),
+          rgba(0, 0, 0, 0.55)),
+        url('https://images.unsplash.com/photo-1523050854058-8df90110c9f1?q=80&w=1600&auto=format&fit=crop');
+      background-size: cover;
+      background-position: center;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+
+      padding: 20px;
+    }
+
+    .hero-content h2 {
+      color: white;
+      font-size: 3rem;
+      margin-bottom: 10px;
+    }
+
+    .hero-content p {
+      color: #dbefff;
+      font-size: 1.1rem;
+    }
+
+    /* ================= CALENDAR ================= */
+
+    .calendar-section {
+      padding: 70px 20px;
+    }
+
+    .calendar-container {
+      max-width: 850px;
+      margin: auto;
+      background: white;
+      padding: 40px;
+      border-radius: 20px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
+    }
+
+    .calendar-container h3 {
+      text-align: center;
+      font-size: 2rem;
+      color: #1e3d59;
+      margin-bottom: 20px;
+    }
+
+    .calendar-container p {
+      color: #555;
+      line-height: 1.8;
+      margin-bottom: 25px;
+      text-align: center;
+    }
+
+    .calendar-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+    }
+
+    .calendar-list li {
+      background: #f7fbfd;
+      border-left: 5px solid #4fc3f7;
+      padding: 18px 20px;
+      border-radius: 12px;
+      transition: 0.3s ease;
+    }
+
+    .calendar-list li:hover {
+      transform: translateX(5px);
+      background: #eef8fc;
+    }
+
+    .calendar-list strong {
+      color: #0f4c75;
+    }
+
+    /* ================= BUTTON ================= */
+
+    .btn {
+      display: inline-block;
+      margin-top: 35px;
+      background: linear-gradient(to right, #00b4db, #0083b0);
+      color: white;
+      text-decoration: none;
+      padding: 14px 28px;
+      border-radius: 50px;
+      font-weight: bold;
+      transition: 0.3s ease;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 20px rgba(0, 132, 176, 0.3);
+    }
+
+    .btn-wrapper {
+      text-align: center;
+    }
+
+    /* ================= FOOTER ================= */
+
+    footer {
+      background: #102027;
+      color: #d7ecf5;
+      text-align: center;
+      padding: 22px;
+      margin-top: 50px;
+    }
+
+    /* ================= RESPONSIVE ================= */
+
+    @media (max-width: 992px) {
+
+      .navbar {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .nav-links {
+        width: 100%;
+        justify-content: center;
+      }
+
+      .search-box {
+        width: 100%;
+      }
+
+      .search-box input {
+        width: 100%;
+      }
+    }
+
+    @media (max-width: 768px) {
+
+      .hero-content h2 {
+        font-size: 2.2rem;
+      }
+
+      .calendar-container {
+        padding: 25px;
+      }
+
+      .nav-links {
+        gap: 14px;
+      }
+    }
+
+    @media (max-width: 480px) {
+
+      .hero-content h2 {
+        font-size: 1.8rem;
+      }
+
+      .hero-content p {
+        font-size: 0.95rem;
+      }
+
+      .logo h1 {
+        font-size: 1rem;
+      }
+
+      .calendar-container h3 {
+        font-size: 1.5rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ================= HEADER ================= -->
+
+  <header class="header">
+
+    <div class="navbar">
+
+      <!-- Logo -->
+      <a href="index.html" class="logo">
+        <img src="https://cdn.moawin.pk/images/branches/2024/04/29/654654_1pv84.png"
+          alt="Hazara University Logo">
+
+        <h1>Hazara University</h1>
+      </a>
+
+      <!-- Navigation -->
+      <nav>
+        <ul class="nav-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="admission.html">Admissions</a></li>
+          <li><a href="faculties.html">Faculties</a></li>
+          <li><a href="programs.html">Programs</a></li>
+          <li><a href="calendar.html">Calendar</a></li>
+          <li><a href="research.html">Research</a></li>
+          <li><a href="library.html">Library</a></li>
+          <li><a href="student-portal.html">Portal</a></li>
+          <li><a href="signup.html">Sign Up</a></li>
+          <li><a href="login.html">Login</a></li>
+        </ul>
+      </nav>
+
+      <!-- Search -->
+      <div class="search-box">
+        <input type="text" placeholder="Search..." />
+        <button>
+          <i class="fas fa-search"></i>
+        </button>
+      </div>
+
+    </div>
+
+  </header>
+
+  <!-- ================= HERO SECTION ================= -->
+
+  <section class="hero">
+
+    <div class="hero-content">
+      <h2>Academic Calendar 2025</h2>
+      <p>Stay updated with semester schedules, exams, and university events.</p>
+    </div>
+
+  </section>
+
+  <!-- ================= CALENDAR SECTION ================= -->
+
+  <section class="calendar-section">
+
+    <div class="calendar-container">
+
+      <h3>Important Academic Dates</h3>
+
+      <p>
+        Below is the official academic schedule for the year 2025 at Hazara University.
+      </p>
+
+      <ul class="calendar-list">
+
+        <li>
+          <strong>Spring Semester Starts:</strong>
+          February 12, 2025
+        </li>
+
+        <li>
+          <strong>Mid-Term Exams:</strong>
+          March 25 – 29, 2025
+        </li>
+
+        <li>
+          <strong>Spring Final Exams:</strong>
+          May 20 – 31, 2025
+        </li>
+
+        <li>
+          <strong>Summer Semester Starts:</strong>
+          June 10, 2025
+        </li>
+
+        <li>
+          <strong>Fall Semester Starts:</strong>
+          September 2, 2025
+        </li>
+
+        <li>
+          <strong>Fall Final Exams:</strong>
+          December 10 – 21, 2025
+        </li>
+
+        <li>
+          <strong>Winter Break:</strong>
+          December 22, 2025 – January 4, 2026
+        </li>
+
+      </ul>
+
+      <div class="btn-wrapper">
+        <a href="index.html" class="btn">
+          ← Back to Home
+        </a>
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- ================= FOOTER ================= -->
+
+  <footer>
+    © 2025 Hazara University — Academic Excellence & Innovation
+  </footer>
+
+  <!-- JS -->
+  <script src="script/chatbot.js"></script>
+
+</body>
+
+</html>

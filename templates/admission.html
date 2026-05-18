@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<header style="
+  background: #1a2e35;  /* Dark teal background */
+  padding: 12px 30px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+">
+  <div style="
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 1400px;
+    margin: 0 auto;
+  ">
+    <!-- Logo and University Name -->
+    <a href="index.html" style="display: flex; align-items: center; gap: 15px; text-decoration: none;">
+  <img src="https://cdn.moawin.pk/images/branches/2024/04/29/654654_1pv84.png" 
+       alt="Hazara University Logo" 
+       style="height: 40px;">
+  <h1 style="
+    color: #e0f2fe;
+    font-size: 1.4rem;
+    margin: 0;
+    font-weight: 600;
+  ">
+    Hazara University
+  </h1>
+</a>
+
+    <!-- Navigation Menu -->
+    <nav>
+      <ul style="
+        list-style: none;
+        display: flex;
+        gap: 25px;
+        padding: 0;
+        margin: 0;
+      ">
+        <li><a href="index.html" style="
+          color: #bae6fd;
+          text-decoration: none;
+          font-weight: 500;
+          font-size: 0.95rem;
+        ">Home</a></li>
+        <li><a href="admission.html" style="
+          color: #bae6fd;
+          text-decoration: none;
+          font-weight: 500;
+          font-size: 0.95rem;
+        ">Admissions</a></li>
+        <li><a href="faculties.html" style="
+          color: #bae6fd;
+          text-decoration: none;
+          font-weight: 500;
+          font-size: 0.95rem;
+        ">Faculties</a></li>
+        <li><a href="programs.html" style="
+          color: #bae6fd;
+          text-decoration: none;
+          font-weight: 500;
+          font-size: 0.95rem;
+        ">Programs</a></li>
+        <li><a href="calendar.html" style="
+          color: #bae6fd;
+          text-decoration: none;
+          font-weight: 500;
+          font-size: 0.95rem;
+        ">Calendar</a></li>
+        <li><a href="research.html" style="
+          color: #bae6fd;
+          text-decoration: none;
+          font-weight: 500;
+          font-size: 0.95rem;
+        ">Research</a></li>
+        <li><a href="library.html" style="
+          color: #bae6fd;
+          text-decoration: none;
+          font-weight: 500;
+          font-size: 0.95rem;
+        ">Library</a></li>
+        <li><a href="student-portal.html" style="
+          color: #bae6fd;
+          text-decoration: none;
+          font-weight: 500;
+          font-size: 0.95rem;
+        ">Student Portal</a></li>
+        <li><a href="signup.html" style="
+          color: #bae6fd;
+          text-decoration: none;
+          font-weight: 500;
+          font-size: 0.95rem;
+        ">Sign up</a></li>
+        <li><a href="login.html" style="
+          color: #bae6fd;
+          text-decoration: none;
+          font-weight: 500;
+          font-size: 0.95rem;
+        ">Login</a></li>
+      </ul>
+    </nav>
+
+    <!-- Improved Search Bar -->
+    <div style="
+      display: flex;
+      align-items: center;
+      background: #2d4a53;
+      border-radius: 4px;
+      padding: 4px 8px;
+    ">
+      <input type="text" placeholder="Search" style="
+        background: transparent;
+        border: none;
+        color: white;
+        padding: 6px 10px;
+        width: 120px;
+        outline: none;
+      ">
+      <button style="
+        background: transparent;
+        border: none;
+        color: #7dd3fc;
+        cursor: pointer;
+        padding: 0 4px;
+      ">
+        <i class="fas fa-search"></i>
+      </button>
+    </div>
+  </div>
+    <link rel="stylesheet" href="style/chatbot.css">
+    <script src="script/chatbot.js"></script>
+</header>
+
+
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Online Admission Form - Hazara University</title>
+  <link rel="stylesheet" href="style/styles.css" />
+  <style>
+    .admission-form {
+      max-width: 600px;
+      margin: auto;
+      padding: 30px;
+      background: rgba(255, 255, 255, 0.95);
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    }
+
+    .admission-form h2 {
+      text-align: center;
+      margin-bottom: 25px;
+      color: #2f5233;
+    }
+
+    .admission-form label {
+      display: block;
+      margin: 12px 0 6px;
+      font-weight: 600;
+    }
+
+    .admission-form input,
+    .admission-form select,
+    .admission-form textarea {
+      width: 100%;
+      padding: 10px 12px;
+      font-size: 1rem;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      outline: none;
+      resize: vertical;
+    }
+
+    .admission-form button {
+      width: 100%;
+      margin-top: 20px;
+      padding: 12px;
+      background-color: #76B947;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      font-size: 1rem;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    .admission-form button:hover {
+      background-color: #5fa435;
+    }
+
+    .admission-form a {
+      display: block;
+      text-align: center;
+      margin-top: 20px;
+      color: #2f5233;
+      text-decoration: none;
+    }
+
+    @media (max-width: 480px) {
+      .admission-form {
+        padding: 20px;
+        border-radius: 10px;
+      }
+
+      .admission-form h2 {
+        font-size: 1.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <section class="container">
+    <form id="admission-form" class="admission-form">
+      <h2>Online Admission Form</h2>
+
+      <label for="name">Full Name:</label>
+      <input type="text" id="name" name="name" required />
+
+      <label for="email">Email:</label>
+      <input type="email" id="email" name="email" required />
+
+      <label for="program">Program:</label>
+      <select id="program" name="program" required>
+        <option value="">--Select Program--</option>
+        <!-- Full program list as before -->
+        <option value="BS Archaeology">BS Archaeology</option>
+        <option value="BS Architecture">BS Architecture</option>
+        <option value="BS Art & Design">BS Art & Design</option>
+        <option value="BS Communication & Media Studies">BS Communication & Media Studies</option>
+        <option value="BS Conservation Studies">BS Conservation Studies</option>
+        <option value="BS Education">BS Education</option>
+        <option value="BS English">BS English</option>
+        <option value="BS Geology">BS Geology</option>
+        <option value="BS Pakistan Studies">BS Pakistan Studies</option>
+        <option value="BS Tourism & Hospitality">BS Tourism & Hospitality</option>
+        <option value="BS Urdu">BS Urdu</option>
+        <option value="BS Agriculture">BS Agriculture</option>
+        <option value="BS Biochemistry">BS Biochemistry</option>
+        <option value="BS Biotechnology">BS Biotechnology</option>
+        <option value="BS Biotechnology & Genetic Engineering">BS Biotechnology & Genetic Engineering</option>
+        <option value="BS Botany">BS Botany</option>
+        <option value="BS Human Genetics">BS Human Genetics</option>
+        <option value="BS Microbiology">BS Microbiology</option>
+        <option value="Doctor of Physiotherapy (DPT)">Doctor of Physiotherapy (DPT)</option>
+        <option value="BS Medical Lab Technology (MLT)">BS Medical Lab Technology (MLT)</option>
+        <option value="BS Pharmacy">BS Pharmacy</option>
+        <option value="BS Zoology">BS Zoology</option>
+        <option value="BS Islamic & Religious Studies">BS Islamic & Religious Studies</option>
+        <option value="LLB (Law)">LLB (Law)</option>
+        <option value="BS Economics">BS Economics</option>
+        <option value="BS Political Science">BS Political Science</option>
+        <option value="BS International Relations">BS International Relations</option>
+        <option value="BS Psychology">BS Psychology</option>
+        <option value="BS Sociology">BS Sociology</option>
+        <option value="BS Public Policy and Administration">BS Public Policy and Administration</option>
+        <option value="BS Management Sciences">BS Management Sciences</option>
+        <option value="BS Chemistry">BS Chemistry</option>
+        <option value="BS Environmental Sciences">BS Environmental Sciences</option>
+        <option value="BS Mathematics">BS Mathematics</option>
+        <option value="BS Physics">BS Physics</option>
+        <option value="BS Information Technology">BS Information Technology</option>
+        <option value="BS Statistics">BS Statistics</option>
+        <option value="BS Telecommunication">BS Telecommunication</option>
+        <option value="BS Bioinformatics">BS Bioinformatics</option>
+        <option value="MPhil Zoology">MPhil Zoology</option>
+        <option value="PhD Zoology">PhD Zoology</option>
+      </select>
+
+      <label for="message">Additional Notes:</label>
+      <textarea id="message" name="message" rows="4"></textarea>
+
+      <button type="submit">Submit Application</button>
+
+      <a href="index.html">⬅ Back to Home</a>
+    </form>
+  </section>
+
+
+</body>
+</html>

@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Login | Hazara University</title>
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <style>
+    body {
+      margin: 0;
+      font-family: "Segoe UI", sans-serif;
+      background: linear-gradient(135deg, #0f3d0f, #0b1f14);
+      color: white;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* ================= NAVBAR ================= */
+
+    .navbar {
+      background: rgba(10, 20, 25, 0.95);
+      padding: 12px 20px;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .nav-container {
+      max-width: 1400px;
+      margin: auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+      color: white;
+    }
+
+    .logo img {
+      width: 42px;
+      height: 42px;
+    }
+
+    .logo h1 {
+      font-size: 1.1rem;
+      margin: 0;
+    }
+
+    /* ================= LOGIN CARD ================= */
+
+    .login-wrapper {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 40px 15px;
+    }
+
+    .login-card {
+      width: 100%;
+      max-width: 420px;
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 18px;
+      padding: 30px;
+      backdrop-filter: blur(12px);
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+    }
+
+    .login-card h2 {
+      text-align: center;
+      margin-bottom: 20px;
+      font-weight: 600;
+    }
+
+    .form-control {
+      background: rgba(255, 255, 255, 0.1);
+      border: none;
+      color: white;
+      padding: 12px;
+      border-radius: 10px;
+    }
+
+    .form-control:focus {
+      background: rgba(255, 255, 255, 0.15);
+      box-shadow: none;
+      border: 1px solid #38bdf8;
+      color: white;
+    }
+
+    .btn-login {
+      background: linear-gradient(135deg, #00c6ff, #0072ff);
+      border: none;
+      padding: 12px;
+      border-radius: 10px;
+      font-weight: 600;
+      transition: 0.3s;
+    }
+
+    .btn-login:hover {
+      transform: translateY(-2px);
+    }
+
+    .note {
+      font-size: 0.85rem;
+      text-align: center;
+      margin-top: 15px;
+      color: #cbd5e1;
+    }
+
+    /* ================= RESPONSIVE ================= */
+
+    @media (max-width: 480px) {
+      .login-card {
+        padding: 20px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ================= NAVBAR ================= -->
+
+  <header class="navbar">
+    <div class="nav-container">
+
+      <a href="index.html" class="logo">
+        <img src="https://cdn.moawin.pk/images/branches/2024/04/29/654654_1pv84.png" />
+        <h1>Hazara University</h1>
+      </a>
+
+    </div>
+  </header>
+
+  <!-- ================= LOGIN ================= -->
+
+  <div class="login-wrapper">
+
+    <div class="login-card">
+
+      <h2><i class="fa-solid fa-user-lock"></i> Login</h2>
+
+      <form id="loginForm">
+
+        <div class="mb-3">
+          <input type="text" id="name" class="form-control" placeholder="Full Name" required>
+        </div>
+
+        <div class="mb-3">
+          <input type="email" id="email" class="form-control" placeholder="University Email" required>
+        </div>
+
+        <button type="submit" class="btn btn-login w-100">
+          Login
+        </button>
+
+      </form>
+
+      <div class="note">
+        Only authorized university users are allowed to access this portal.
+      </div>
+
+    </div>
+
+  </div>
+
+  <!-- ================= SCRIPT ================= -->
+
+  <script>
+    document.getElementById("loginForm").addEventListener("submit", function (e) {
+      e.preventDefault();
+
+      const name = document.getElementById("name").value.trim();
+      const email = document.getElementById("email").value.trim();
+
+      if (!name || !email.includes("@")) {
+        alert("Invalid input. Fix it first.");
+        return;
+      }
+
+      // fake auth simulation
+      localStorage.setItem("user", JSON.stringify({ name, email }));
+
+      alert(`Access granted, ${name}`);
+
+      window.location.href = "index.html";
+    });
+  </script>
+
+</body>
+</html>

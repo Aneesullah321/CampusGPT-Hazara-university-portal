@@ -1,0 +1,220 @@
+/* Universal Chatbot Styles for Hazara University */
+
+/* Chatbot Toggle Button */
+.hu-chatbot-toggle {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: linear-gradient(135deg, #2f5233 0%, #1a2e35 100%);
+  color: white;
+  border: none;
+  padding: 15px 20px;
+  border-radius: 50px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  z-index: 9999;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+  transition: all 0.3s ease;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.hu-chatbot-toggle:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0,0,0,0.4);
+}
+
+.hu-chatbot-toggle i {
+  margin-right: 8px;
+}
+
+/* Chatbot Container */
+.hu-chatbot-container {
+  position: fixed;
+  bottom: 90px;
+  right: 20px;
+  width: 350px;
+  height: 500px;
+  background: white;
+  border-radius: 15px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+  display: none;
+  flex-direction: column;
+  z-index: 9999;
+  overflow: hidden;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.hu-chatbot-container.active {
+  display: flex;
+  animation: hu-slideUp 0.3s ease;
+}
+
+@keyframes hu-slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Chatbot Header */
+.hu-chatbot-header {
+  background: linear-gradient(135deg, #2f5233 0%, #1a2e35 100%);
+  color: white;
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.hu-chatbot-header h3 {
+  margin: 0;
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+.hu-chatbot-header i {
+  margin-right: 8px;
+}
+
+.hu-chatbot-close {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 24px;
+  cursor: pointer;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: background-color 0.3s ease;
+}
+
+.hu-chatbot-close:hover {
+  background-color: rgba(255,255,255,0.2);
+}
+
+/* Messages Area */
+.hu-chatbot-messages {
+  flex: 1;
+  padding: 20px;
+  overflow-y: auto;
+  background-color: #f8f9fa;
+}
+
+.hu-chat-message {
+  margin-bottom: 15px;
+  max-width: 85%;
+  word-wrap: break-word;
+  white-space: pre-line;
+  animation: hu-fadeIn 0.3s ease;
+}
+
+.hu-bot-message {
+  background: #e9ecef;
+  color: #333;
+  padding: 12px 16px;
+  border-radius: 18px 18px 18px 5px;
+  align-self: flex-start;
+}
+
+.hu-user-message {
+  background: linear-gradient(135deg, #2f5233 0%, #1a2e35 100%);
+  color: white;
+  padding: 12px 16px;
+  border-radius: 18px 18px 5px 18px;
+  margin-left: auto;
+  text-align: left;
+}
+
+@keyframes hu-fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Input Area */
+.hu-chatbot-input {
+  padding: 20px;
+  background: white;
+  border-top: 1px solid #e9ecef;
+  display: flex;
+  gap: 10px;
+}
+
+.hu-chatbot-input input {
+  flex: 1;
+  padding: 12px 16px;
+  border: 2px solid #e9ecef;
+  border-radius: 25px;
+  outline: none;
+  font-size: 14px;
+  transition: border-color 0.3s ease;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.hu-chatbot-input input:focus {
+  border-color: #2f5233;
+}
+
+.hu-chatbot-send {
+  background: linear-gradient(135deg, #2f5233 0%, #1a2e35 100%);
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 45px;
+  height: 45px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.2s ease;
+}
+
+.hu-chatbot-send:hover {
+  transform: scale(1.05);
+}
+
+/* Scrollbar */
+.hu-chatbot-messages::-webkit-scrollbar {
+  width: 6px;
+}
+
+.hu-chatbot-messages::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 10px;
+}
+
+.hu-chatbot-messages::-webkit-scrollbar-thumb {
+  background: #2f5233;
+  border-radius: 10px;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 480px) {
+  .hu-chatbot-container {
+    width: calc(100vw - 40px);
+    height: 70vh;
+    bottom: 20px;
+    right: 20px;
+    left: 20px;
+  }
+
+  .hu-chatbot-toggle {
+    right: 15px;
+    bottom: 15px;
+    font-size: 12px;
+    padding: 12px 16px;
+  }
+}
