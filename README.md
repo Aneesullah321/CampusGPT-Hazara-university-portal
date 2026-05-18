@@ -1,7 +1,6 @@
 # 🎓 CampusGPT — Hazara University Web Portal
 
 A fully responsive, multi-page university website built for **Hazara University, Mansehra** — featuring an AI-powered campus chatbot, a professional navigation system, a modal-based login/signup flow, and a clean institutional design.
-
 ---
 
 ## 📋 Table of Contents
